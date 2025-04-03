@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="portfolio, Kartik Hande, web development, AI, frontend developer, progress" />
+    <meta name="description" content="Kartik Hande's Portfolio - Web Development Progress" />
+    <meta name="author" content="Kartik Hande" />
+
+    <title>Web Development Progress</title>
+
+    <!-- External CDN stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Basic styles for header and navbar -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #212529;
+        }
+
+        .hero_area {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 99;
+        }
+
+        .header_section {
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            color: #0078ff !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 120, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            padding: 10px 15px;
+            color: #343a40;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover,
+        .navbar-nav .nav-item.active .nav-link {
+            color: #0078ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .heading_container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .heading_container h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0078ff;
+            margin-bottom: 10px;
+        }
+
+        .heading_container p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .footer_section {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .footer_section p {
+            margin-bottom: 0;
+        }
+
+        .back-to-top {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .back-to-top a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #0078ff;
+            color: #ffffff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top a:hover {
+            background-color: #0056b3;
+            transform: translateY(-5px);
+        }
+
+        .back-to-top i {
+            font-size: 20px;
+        }
+    </style>
+
+    <!-- Progress page specific styles -->
+    <style>
+        /* Progress page styles */
+        #progress_page {
+            padding: 75px 0;
+            background-color: #f8f9fa;
+        }
+
+        .day_container {
+            margin-bottom: 60px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .day_container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .day_header {
+            background: linear-gradient(to right, #0078ff, #00c6ff);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .day_header h3 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .day_content {
+            padding: 25px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .day_image {
+            flex: 0 0 40%;
+            max-width: 40%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+            /* Fixed container height */
+        }
+
+        .day_image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Changed from cover to contain for proper proportions */
+            transition: transform 0.3s ease;
+        }
+
+        .day_image:hover img {
+            transform: scale(1.05);
+        }
+
+        .day_details {
+            flex: 0 0 55%;
+            max-width: 55%;
+            margin-left: 5%;
+        }
+
+        .day_details h4 {
+            color: #0078ff;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .day_details ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .day_details li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 5px;
+        }
+
+        .day_details li:before {
+            content: "•";
+            color: #0078ff;
+            font-weight: bold;
+            display: inline-block;
+            width: 15px;
+            margin-left: -15px;
+        }
+
+        .code_snippet {
+            background-color: #f1f1f1;
+            border-left: 4px solid #0078ff;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        .progress_nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .progress_nav a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #0078ff;
+            color: #fff;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .progress_nav a:hover {
+            background-color: #005fbf;
+            transform: translateY(-3px);
+        }
+
+        .progress_nav i {
+            font-size: 20px;
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .day_content {
+                flex-direction: column;
+            }
+
+            .day_image,
+            .day_details {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-left: 0;
+            }
+
+            .day_image {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .day_header h3 {
+                font-size: 20px;
+            }
+
+            .day_details h4 {
+                font-size: 18px;
+            }
+
+            .progress_nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .progress_nav a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                    <a class="navbar-brand mr-5" href="index.html">
+                        <span>
+                            Kartik Hande
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#home">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#about">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#education">Education</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#skills">Skills</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#portfolio">Portfolio</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html#modules">Modules <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#contact">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+    </div>
+
+    <!-- progress page section -->
+    <section id="progress_page">
+        <div class="container">
+            <div class="heading_container">
+                <h2>My Web Development Journey</h2>
+                <p>Follow my day-by-day progress as I learn and master web development skills</p>
+            </div>
+
+            <!-- Day 1 -->
+            <div class="day_container">
+                <div class="day_header">
+                    <h3>Day 1: Getting Started with VS Code</h3>
+                </div>
+                <div class="day_content">
+                    <div class="day_image">
+                        <img src="Screenshot 2025-04-02 185400.png" alt="VS Code Setup">
+                    </div>
+                    <div class="day_details">
+                        <h4>Setting Up My Development Environment</h4>
+                        <p>My journey into web development began with setting up Visual Studio Code, an incredibly
+                            powerful and
+                            customizable code editor. Here's what I accomplished today:</p>
+                        <ul>
+                            <li>Installed VS Code and configured it for web development</li>
+                            <li>Learned essential keyboard shortcuts to boost productivity</li>
+                            <li>Set up extensions like Live Server, Prettier, and Auto Close Tag</li>
+                            <li>Customized my workspace with themes and font settings</li>
+                            <li>Created my first project folder structure</li>
+                        </ul>
+                        <p>The most valuable shortcuts I learned today:</p>
+                        <div class="code_snippet">
+                            Ctrl+S: Save file<br>
+                            Ctrl+C/Ctrl+V: Copy/Paste<br>
+                            Alt+Shift+F: Format code<br>
+                            Ctrl+/: Toggle comment<br>
+                            Ctrl+` : Toggle terminal
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="day_container">
+                <div class="day_header">
+                    <h3>Day 2: HTML Fundamentals</h3>
+                </div>
+                <div class="day_content">
+                    <div class="day_image">
+                        <img src="Screenshot 2025-03-29 230114.png" alt="HTML Basics">
+                    </div>
+                    <div class="day_details">
+                        <h4>Learning Basic HTML Tags</h4>
+                        <p>Today I dove into HTML (HyperText Markup Language), the building blocks of every website. I
+                            focused on
+                            understanding the basic structure and essential tags:</p>
+                        <ul>
+                            <li>Created my first HTML document with proper structure</li>
+                            <li>Learned about headings (h1-h6), paragraphs, and text formatting</li>
+                            <li>Added links using anchor tags and images using img tags</li>
+                            <li>Created ordered and unordered lists</li>
+                            <li>Added comments to improve code readability</li>
+                        </ul>
+                        <p>Sample code snippet from today:</p>
+                        <div class="code_snippet">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html lang="en"&gt;<br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                            &nbsp;&nbsp;&lt;title&gt;My First Web Page&lt;/title&gt;<br>
+                            &lt;/head&gt;<br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&lt;h1&gt;Hello World!&lt;/h1&gt;<br>
+                            &nbsp;&nbsp;&lt;p&gt;This is my first web page.&lt;/p&gt;<br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="day_container">
+                <div class="day_header">
+                    <h3>Day 3: Advanced HTML - Forms and Tables</h3>
+                </div>
+                <div class="day_content">
+                    <div class="day_image">
+                        <img src="Screenshot 2025-03-29 230009.png" alt="HTML Forms and Tables">
+                    </div>
+                    <div class="day_details">
+                        <h4>Creating Interactive Elements</h4>
+                        <p>On my third day, I expanded my HTML knowledge by learning how to create forms for user input
+                            and tables
+                            for organizing data:</p>
+                        <ul>
+                            <li>Built forms with various input types (text, email, password, etc.)</li>
+                            <li>Added dropdown menus, checkboxes, and radio buttons</li>
+                            <li>Created submit buttons and form validations</li>
+                            <li>Constructed tables with headers, rows, and columns</li>
+                            <li>Used colspan and rowspan for complex table layouts</li>
+                        </ul>
+                        <p>I created this simple contact form:</p>
+                        <div class="code_snippet">
+                            &lt;form action="/submit" method="post"&gt;<br>
+                            &nbsp;&nbsp;&lt;label for="name"&gt;Name:&lt;/label&gt;<br>
+                            &nbsp;&nbsp;&lt;input type="text" id="name" name="name" required&gt;<br><br>
+                            &nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>
+                            &nbsp;&nbsp;&lt;input type="email" id="email" name="email" required&gt;<br><br>
+                            &nbsp;&nbsp;&lt;input type="submit" value="Submit"&gt;<br>
+                            &lt;/form&gt;
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="day_container">
+                <div class="day_header">
+                    <h3>Day 4: Introduction to CSS</h3>
+                </div>
+                <div class="day_content">
+                    <div class="day_image">
+                        <img src="Screenshot 2025-04-02 185946.png" alt="CSS Styling">
+                    </div>
+                    <div class="day_details">
+                        <h4>Styling Web Pages</h4>
+                        <p>Today I started learning CSS (Cascading Style Sheets), which transforms plain HTML into
+                            visually
+                            appealing websites:</p>
+                        <ul>
+                            <li>Explored the three ways to add CSS: inline, internal, and external</li>
+                            <li>Learned about selectors, properties, and values</li>
+                            <li>Styled text with font properties, colors, and alignments</li>
+                            <li>Added background colors and images</li>
+                            <li>Used margin and padding to control spacing</li>
+                        </ul>
+                        <p>Sample CSS code I wrote today:</p>
+                        <div class="code_snippet">
+                            body {<br>
+                            &nbsp;&nbsp;font-family: 'Arial', sans-serif;<br>
+                            &nbsp;&nbsp;line-height: 1.6;<br>
+                            &nbsp;&nbsp;margin: 0;<br>
+                            &nbsp;&nbsp;padding: 0;<br>
+                            &nbsp;&nbsp;background-color: #f4f4f4;<br>
+                            }<br><br>
+                            header {<br>
+                            &nbsp;&nbsp;background: #0078ff;<br>
+                            &nbsp;&nbsp;color: #ffffff;<br>
+                            &nbsp;&nbsp;padding: 20px;<br>
+                            &nbsp;&nbsp;text-align: center;<br>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="day_container">
+                <div class="day_header">
+                    <h3>Day 5: CSS Box Model and Flexbox</h3>
+                </div>
+                <div class="day_content">
+                    <div class="day_image">
+                        <img src="Screenshot 2025-03-29 225852.png" alt="CSS Box Model and Flexbox">
+                    </div>
+                    <div class="day_details">
+                        <h4>Layout and Positioning</h4>
+                        <p>On my fifth day, I delved deeper into CSS by learning about layout models that are essential
+                            for creating
+                            modern, responsive designs:</p>
+                        <ul>
+                            <li>Mastered the CSS Box Model (content, padding, border, margin)</li>
+                            <li>Explored different display properties</li>
+                            <li>Learned about positioning (static, relative, absolute, fixed)</li>
+                            <li>Implemented Flexbox for creating flexible layouts</li>
+                            <li>Created a simple responsive navigation bar</li>
+                        </ul>
+                        <p>Flexbox code sample from today's practice:</p>
+                        <div class="code_snippet">
+                            .container {<br>
+                            &nbsp;&nbsp;display: flex;<br>
+                            &nbsp;&nbsp;justify-content: space-between;<br>
+                            &nbsp;&nbsp;align-items: center;<br>
+                            &nbsp;&nbsp;flex-wrap: wrap;<br>
+                            }<br><br>
+                            .item {<br>
+                            &nbsp;&nbsp;flex: 1 1 300px;<br>
+                            &nbsp;&nbsp;margin: 10px;<br>
+                            &nbsp;&nbsp;padding: 20px;<br>
+                            &nbsp;&nbsp;background-color: #ffffff;<br>
+                            &nbsp;&nbsp;box-shadow: 0 2px 5px rgba(0,0,0,0.1);<br>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation back to main page -->
+            <div class="progress_nav">
+                <a href="index.html#modules"><i class='bx bx-left-arrow-alt'></i> Back to Modules</a>
+                <a href="index.html#contact">Contact Me <i class='bx bx-right-arrow-alt'></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- end progress page section -->
+
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+        <p>
+            &copy; 2025 All Rights Reserved by Kartik Hande
+        </p>
+        <div class="back-to-top">
+            <a href="#progress_page"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </section>
+    <!-- footer section -->
+
+    <!-- Required JS files loaded from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

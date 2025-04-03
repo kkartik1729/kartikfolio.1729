@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="portfolio, Kartik Hande, web development, AI, frontend developer, modules" />
+  <meta name="description" content="Kartik Hande's Portfolio - Modules Section" />
+  <meta name="author" content="Kartik Hande" />
+  <title>Kartik Hande - Portfolio</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" />
+  <link href="responsive.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    #modules {
+      padding: 75px 0;
+      background-color: #f8f9fa;
+    }
+
+    .modules_container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .module_item {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      height: 340px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .module_item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .module_bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: all 0.5s ease;
+    }
+
+    .module_item:hover .module_bg {
+      transform: scale(1.1);
+    }
+
+    .module_overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 25px;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    .module_item:hover .module_overlay {
+      background: linear-gradient(to bottom, rgba(0, 120, 255, 0.4), rgba(0, 0, 0, 0.9));
+    }
+
+    .module_title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .module_desc {
+      font-size: 14px;
+      line-height: 1.5;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .module_item:hover .module_desc {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    .module_icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 36px;
+      color: #ffffff;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .module_item:hover .module_icon {
+      transform: rotate(15deg);
+      color: #0078ff;
+      opacity: 1;
+    }
+
+    /* Navbar Fixes */
+    .navbar {
+      padding: 15px 0;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 24px;
+      color: #0078ff !important;
+    }
+
+    .navbar-toggler {
+      border: none;
+      background-color: #0078ff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar-nav {
+      margin-left: auto;
+    }
+
+    .nav-item {
+      margin: 0 10px;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: #333;
+      position: relative;
+      padding: 8px 5px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #0078ff;
+    }
+
+    .nav-item.active .nav-link {
+      color: #0078ff;
+    }
+
+    .nav-item.active .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #0078ff;
+    }
+
+    /* Enhanced Footer Styles */
+    .footer_section {
+      background-color: #333;
+      color: #fff;
+      padding: 0;
+      position: relative;
+    }
+
+    .footer_main {
+      padding: 60px 0 30px;
+      background-color: #111;
+    }
+
+    .footer_widget {
+      margin-bottom: 30px;
+    }
+
+    .footer_widget h3 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer_widget h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #0078ff;
+    }
+
+    .footer_widget p {
+      color: #ccc;
+      margin-bottom: 15px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer_contact_info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer_contact_info li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .footer_contact_info li i {
+      color: #0078ff;
+      font-size: 18px;
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+
+    .footer_social {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .footer_social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 50%;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .footer_social a:hover {
+      background-color: #0078ff;
+      transform: translateY(-3px);
+    }
+
+    .footer_links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer_links li {
+      margin-bottom: 12px;
+    }
+
+    .footer_links li a {
+      color: #ccc;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: block;
+      text-decoration: none;
+    }
+
+    .footer_links li a:hover {
+      color: #0078ff;
+      padding-left: 5px;
+    }
+
+    .footer_links li a i {
+      font-size: 12px;
+      margin-right: 5px;
+    }
+
+    .footer_newsletter p {
+      margin-bottom: 20px;
+    }
+
+    .newsletter_form {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .newsletter_form input {
+      width: 100%;
+      padding: 12px 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .newsletter_form input:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .newsletter_form button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: #0078ff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 7px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter_form button:hover {
+      background-color: #0062cc;
+    }
+
+    .footer_bottom {
+      background-color: #0a0a0a;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .footer_bottom p {
+      margin-bottom: 0;
+    }
+
+    .footer_bottom a {
+      color: #0078ff;
+      text-decoration: none;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #0078ff;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .back-to-top:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+
+    .back-to-top i {
+      font-size: 20px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 1200px) {
+      .modules_container {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .navbar-nav {
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      .navbar-collapse {
+        margin-top: 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .module_item {
+        max-width: 300px;
+        height: 300px;
+      }
+
+      .footer_widget {
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .modules_container {
+        gap: 15px;
+      }
+
+      .module_item {
+        max-width: 100%;
+        height: 280px;
+      }
+
+      .module_title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand mr-5" href="index.html">
+            Kartik Hande
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#education">Education</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#modules">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section class="slider_section position-relative" id="home">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <div>
+                      <h1>
+                        Hello, It's Me <br>
+                        <span>
+                          Kartik Hande
+                        </span>
+                      </h1>
+                      <h3>And I'm a <span class="typed-text"></span></h3>
+                      <p>
+                        I'm a Web Developer with experience in Frontend Design. Currently pursuing a BE in Computer
+                        Science
+                        and Engineering at SSGMCE. Let's build something amazing together!
+                      </p>
+                      <div class="btn-box">
+                        <a href="#about" class="btn-1">
+                          More About Me
+                        </a>
+                        <a href="#contact" class="btn-2">
+                          Contact Me
+                        </a>
+                      </div>
+                      <div class="social-icons mt-4">
+                        <a href="https://www.instagram.com" target="_blank"><i class='bx bxl-instagram'></i></a>
+                        <a href="https://www.facebook.com" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+                        <a href="https://wa.me/917387493006" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+                        <a href="https://www.linkedin.com/in/kkartik1729/" target="_blank"><i
+                            class='bx bxl-linkedin'></i></a>
+                        <a href="https://www.twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section class="about_section layout_padding" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About Me
+              </h2>
+            </div>
+            <p>
+              Hello! I'm <strong>Kartik Hande</strong>, currently pursuing a <strong>BE in Computer Science and
+                Engineering</strong> at <strong>SSGMCE</strong>.
+              I recently participated in the <strong>INNOVO Hackathon 2025</strong>.
+            </p>
+            <p>
+              I have a strong interest in <strong>Web Development</strong> and <strong>Data Structures & Algorithms
+                (DSA)</strong>.
+            </p>
+            <p>
+              I love exploring new technologies and continuously enhancing my skills. Apart from coding, I
+              enjoy participating in hackathons, problem-solving challenges, and working on innovative
+              projects that can have a real-world impact.
+            </p>
+            <a href="resume.pdf" download class="download-btn">
+              Download Resume
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <div class="img-box">
+              <img src="kartik Photo.jpg" alt="Kartik Hande"
+                style="border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,0.2); width: 80%; margin: 0 auto; display: block; border: 5px solid #0078ff;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about_section layout_padding" id="education">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          My Education
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="education-card">
+            <div class="education-icon">
+              <i class='bx bxs-graduation' style="font-size: 48px; color: #0078ff;"></i>
+            </div>
+            <h3>Bachelor of Engineering</h3>
+            <h4>Computer Science & Engineering</h4>
+            <p>SHRI SANT GAJANAN MAHARAJ COLLEGE OF ENGINEERING (SSGMCE)</p>
+            <p>First Year | 2024-Present</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="education-card">
+            <div class="education-icon">
+              <i class='bx bxs-school' style="font-size: 48px; color: #0078ff;"></i>
+            </div>
+            <h3>Higher Secondary</h3>
+            <h4>12th Grade</h4>
+            <p>Maharashtra State Board</p>
+            <p>Percentage: 75.00% | 2024</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="education-card">
+            <div class="education-icon">
+              <i class='bx bxs-book-alt' style="font-size: 48px; color: #0078ff;"></i>
+            </div>
+            <h3>Secondary Education</h3>
+            <h4>10th Grade</h4>
+            <p>Maharashtra State Board</p>
+            <p>Percentage: 91.20% | 2022</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="body_bg layout_padding">
+    <section class="service_section" id="skills">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            My Skills
+          </h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <i class='bx bxl-html5' style="font-size: 48px;"></i>
+              </div>
+              <h4>
+                HTML5
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-level"
+                  style="width: 90%; height: 10px; background-color: #0078ff; border-radius: 5px;"></div>
+              </div>
+              <p>
+                Strong proficiency in building the structure of websites using HTML5, creating semantic markup and
+                ensuring accessibility.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <i class='bx bxl-css3' style="font-size: 48px;"></i>
+              </div>
+              <h4>
+                CSS3
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-level"
+                  style="width: 85%; height: 10px; background-color: #0078ff; border-radius: 5px;"></div>
+              </div>
+              <p>
+                Skilled in styling web pages, creating responsive designs, and implementing modern CSS features for
+                visually appealing interfaces.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <i class='bx bxl-javascript' style="font-size: 48px;"></i>
+              </div>
+              <h4>
+                JavaScript
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-level"
+                  style="width: 70%; height: 10px; background-color: #0078ff; border-radius: 5px;"></div>
+              </div>
+              <p>
+                Basic knowledge of JavaScript for creating interactive web elements, form validations, and enhancing
+                user experience.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <i class='bx bx-code-alt' style="font-size: 48px;"></i>
+              </div>
+              <h4>
+                C Programming
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-level"
+                  style="width: 75%; height: 10px; background-color: #0078ff; border-radius: 5px;"></div>
+              </div>
+              <p>
+                Foundational knowledge of C programming with experience in algorithm implementation and problem-solving.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about_section layout_padding" id="modules">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            My Modules
+          </h2>
+          <p>Explore the different areas of expertise and skills that I offer</p>
+        </div>
+        <div class="modules_container">
+          <div class="module_item">
+            <div class="module_bg" style="background-image: url('web-development.webp');"></div>
+            <div class="module_overlay">
+              <div class="module_icon">
+                <i class='bx bx-code-alt'></i>
+              </div>
+              <h3 class="module_title">Web Development</h3>
+              <p class="module_desc">
+                Creating responsive, user-friendly websites with modern technologies like HTML5, CSS3, and JavaScript.
+                <a href="web-dev-progress.html"
+                  style="color: #0078ff; display: block; margin-top: 10px; font-weight: 600;">
+                  View Progress <i class='bx bx-right-arrow-alt'></i>
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class="module_item">
+            <div class="module_bg" style="background-image: url('/api/placeholder/400/320');"></div>
+            <div class="module_overlay">
+              <div class="module_icon">
+                <i class='bx bx-data'></i>
+              </div>
+              <h3 class="module_title">Module 2</h3>
+              <p class="module_desc">
+
+              </p>
+            </div>
+          </div>
+          <div class="module_item">
+            <div class="module_bg" style="background-image: url('/api/placeholder/400/320');"></div>
+            <div class="module_overlay">
+              <div class="module_icon">
+                <i class='bx bx-brain'></i>
+              </div>
+              <h3 class="module_title">Module 3</h3>
+              <p class="module_desc">
+
+              </p>
+            </div>
+          </div>
+          <div class="module_item">
+            <div class="module_bg" style="background-image: url('/api/placeholder/400/320');"></div>
+            <div class="module_overlay">
+              <div class="module_icon">
+                <i class='bx bx-mobile-alt'></i>
+              </div>
+              <h3 class="module_title">Module 4</h3>
+              <p class="module_desc">
+              </p>
+            </div>
+          </div>
+          <div class="module_item">
+            <div class="module_bg" style="background-image: url('/api/placeholder/400/320');"></div>
+            <div class="module_overlay">
+              <div class="module_icon">
+                <i class='bx bx-server'></i>
+              </div>
+              <h3 class="module_title">Module 5</h3>
+              <p class="module_desc">
+              </p>
+            </div>
+          </div>
+          <div class="module_item">
+            <div class="module_bg" style="background-image: url('/api/placeholder/400/320');"></div>
+            <div class="module_overlay">
+              <div class="module_icon">
+                <i class='bx bx-palette'></i>
+              </div>
+              <h3 class="module_title">Module 6</h3>
+              <p class="module_desc">
+              </p>
+            </div>
+          </div>
+        </div>
+    </section>
+    <!-- Contact Section Improvements -->
+    <section class="contact_section" id="contact">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Let's Connect
+          </h2>
+          <p class="text-center">Have a project in mind or want to collaborate? I'd love to hear from you!</p>
+        </div>
+        <div class="container contact_bg">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="contact_form">
+                <form id="contactForm">
+                  <div class="form-group">
+                    <div class="input-wrapper">
+                      <i class='bx bx-user input-icon'></i>
+                      <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-wrapper">
+                      <i class='bx bx-envelope input-icon'></i>
+                      <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-wrapper">
+                      <i class='bx bx-message-detail input-icon'></i>
+                      <input type="text" class="form-control" placeholder="Subject" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-wrapper">
+                      <i class='bx bx-pencil input-icon textarea-icon'></i>
+                      <textarea class="form-control message_input" placeholder="Your Message" rows="5"
+                        required></textarea>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-submit">
+                    <span>Send Message</span>
+                    <i class='bx bx-send'></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="contact-info">
+                <h4>Contact Information</h4>
+                <div class="info-item">
+                  <div class="info-icon">
+                    <i class='bx bx-map'></i>
+                  </div>
+                  <div class="info-content">
+                    <h5>Location</h5>
+                    <p>Shegaon, Maharashtra, India</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon">
+                    <i class='bx bx-envelope'></i>
+                  </div>
+                  <div class="info-content">
+                    <h5>Email</h5>
+                    <p><a href="mailto:kartikhande1729@gmail.com">handekartik1729@gmail.com</a></p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon">
+                    <i class='bx bx-phone'></i>
+                  </div>
+                  <div class="info-content">
+                    <h5>Phone</h5>
+                    <p><a href="tel:+917387493006">+91 7387493006</a></p>
+                  </div>
+                </div>
+                <div class="contact-social-links">
+                  <h5>Connect with me</h5>
+                  <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/kkartik1729/" target="_blank" aria-label="LinkedIn"><i
+                        class='bx bxl-linkedin'></i></a>
+                    <a href="https://wa.me/917387493006" target="_blank" aria-label="WhatsApp"><i
+                        class='bx bxl-whatsapp'></i></a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i
+                        class='bx bxl-instagram'></i></a>
+                    <a href="https://github.com" target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i
+                        class='bx bxl-twitter'></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer_section">
+      <div class="footer_main">
+        <div class="container">
+          <div class="row">
+            <!-- About Column -->
+            <div class="col-lg-4 col-md-6">
+              <div class="footer_widget">
+                <h3>Kartik Hande</h3>
+                <p>Computer Science Engineering student at SSGMCE with passion for web development</p>
+                <div class="footer_social">
+                  <a href="https://www.linkedin.com/in/kkartik1729/" target="_blank" aria-label="LinkedIn"><i
+                      class='bx bxl-linkedin'></i></a>
+                  <a href="https://wa.me/917387493006" target="_blank" aria-label="WhatsApp"><i
+                      class='bx bxl-whatsapp'></i></a>
+                  <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i
+                      class='bx bxl-instagram'></i></a>
+                  <a href="https://github.com" target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                  <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i
+                      class='bx bxl-twitter'></i></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-lg-4 col-md-6">
+              <div class="footer_widget">
+                <h3>Quick Links</h3>
+                <ul class="footer_links">
+                  <li><a href="#home"><i class='bx bx-chevron-right'></i> Home</a></li>
+                  <li><a href="#about"><i class='bx bx-chevron-right'></i> About</a></li>
+                  <li><a href="#education"><i class='bx bx-chevron-right'></i> Education</a></li>
+                  <li><a href="#skills"><i class='bx bx-chevron-right'></i> Skills</a></li>
+                  <li><a href="#modules"><i class='bx bx-chevron-right'></i> Modules</a></li>
+                  <li><a href="#contact"><i class='bx bx-chevron-right'></i> Contact</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Contact Info Column -->
+            <div class="col-lg-4 col-md-6">
+              <div class="footer_widget">
+                <h3>Contact Info</h3>
+                <ul class="footer_contact_info">
+                  <li>
+                    <i class='bx bx-map'></i>
+                    <div>
+                      <span>Shegaon, Maharashtra, India</span>
+                    </div>
+                  </li>
+                  <li>
+                    <i class='bx bx-envelope'></i>
+                    <div>
+                      <span>kartikhande1729@gmail.com</span>
+                    </div>
+                  </li>
+                  <li>
+                    <i class='bx bx-phone'></i>
+                    <div>
+                      <span>+91 7387493006</span>
+                    </div>
+                  </li>
+                  <li>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="footer_bottom">
+        <div class="container">
+          <p>&copy; 2025 Kartik Hande. All Rights Reserved | Designed with <i class='bx bxs-heart'
+              style="color: #0078ff;"></i> by Kartik</p>
+        </div>
+      </div>
+
+      <!-- Back to Top Button -->
+      <a href="#" class="back-to-top">
+        <i class='bx bx-up-arrow-alt'></i>
+      </a>
+    </footer>
+    <a href="#" class="back-to-top">
+      <i class='bx bx-up-arrow-alt'></i>
+    </a>
+    </footer>
+    <a href="#" class="back-to-top">
+      <i class='bx bx-up-arrow-alt'></i>
+    </a>
+    </footer>
+
+    <script src="portfolio.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
